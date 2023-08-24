@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 
 const TemplateLayout = () => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+    // const location = useLocation();
+    // const userName = location.state?.userName || '';
     return (
         <div className="admin-layout">
             <div className="admin-appbar glass-structure">

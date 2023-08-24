@@ -58,7 +58,7 @@ export default function Login() {
             console.log("Sign-in Failed:",error)
         }
     }
-    
+    // onClick={() => navigate('/admin')}
     return (
         <div className="login-bg">
             <form className="glass-card" onSubmit={loginCheck}>
@@ -69,6 +69,7 @@ export default function Login() {
                 <button className='primary'>Login</button>
                 {status === false && <p style={{ "color": "red" }}>Sign in failed !! Try Agian...</p>}
             </form>
+
         </div>
     );
 }

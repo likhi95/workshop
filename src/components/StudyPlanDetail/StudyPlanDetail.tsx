@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-
+import StudyService from '../../services/StudyService';
 import AiModal from '../Layout/Modal';
 
 export default function StudyPlanDetail() {
@@ -40,7 +40,7 @@ export default function StudyPlanDetail() {
         }
     }
 
-    
+    console.log(params.id)
 
     const onChapter = (event: any) => {
         {
@@ -119,7 +119,7 @@ export default function StudyPlanDetail() {
 
     }
 
-    // console.log(editableChapter.id)
+    console.log(editableChapter.id)
 
     const updateChapter = async (event: any) => {
         event.preventDefault();
@@ -145,13 +145,13 @@ export default function StudyPlanDetail() {
     };
 
 
-    // const filterChapter = (event: any) => {
-    //     const filteredValue = event.target.value.toLowerCase()
-    //     const filtered = subject.chapters.filter((chapter: any) => {
-    //         return chapter.chapterTitle.toLowerCase().includes(filteredValue)
-    //     })
-    //     setFilteredChapters(filtered)
-    // }
+    const filterChapter = (event: any) => {
+        const filteredValue = event.target.value.toLowerCase()
+        const filtered = subject.chapters.filter((chapter: any) => {
+            return chapter.chapterTitle.toLowerCase().includes(filteredValue)
+        })
+        setFilteredChapters(filtered)
+    }
 
 
 
@@ -159,7 +159,7 @@ export default function StudyPlanDetail() {
     return (
         <div>
             <AiModal title={isEditMode ? 'Edit Chapter' : 'Add Chapter'} isOpen={isAddOpen} onClose={() => setAddOpen(false)}>
-                <form className="user-form">
+                <form className="user-form" onSubmit={isEditMode ? updateChapter : addChapter}>
                     <div className="form-group">
                         <label htmlFor="chapter">Chpater Name:</label>
                         <input type="text" id="chapter" name="chapter" placeholder="Enter your chapter" required onChange={onChapter} value={isEditMode ? editableChapter.chapterTitle : formData.chapterTitle} />
@@ -175,7 +175,7 @@ export default function StudyPlanDetail() {
             <div className="module-header glass-structure">
                 <h3>{subject && subject.title}</h3>
                 <div className="module-actions">
-                    <input type="text" placeholder="Search..." className="module-search-input"/>
+                    <input type="text" placeholder="Search..." className="module-search-input" onChange={filterChapter} />
                     <button className="module-add-btn" onClick={() => setAddOpen(!isAddOpen)}>Add</button>
                 </div>
             </div>
@@ -187,7 +187,7 @@ export default function StudyPlanDetail() {
                             <div className="description">{chapter.chapterDescription}</div>
 
                             <button className="table-action-btn table-edit-btn" onClick={() => handleEditClick(chapter)}>Edit</button>
-                            <button className="table-action-btn table-delete-btn" >Delete</button>
+                            <button className="table-action-btn table-delete-btn" onClick={() => handleDeleteClick(chapter)}>Delete</button>
                         </div>
                     ))
                 }
