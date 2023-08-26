@@ -9,7 +9,7 @@
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 
 
-#Detail about the project Structure 
+# Detail about the project Structure 
 - as project is having a folder structure like this.
       - node_modulus
       - public
@@ -53,26 +53,21 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 ## using API data rendering 
+-download the fully integrated app from the different batch , extract into your system.
+-open in vs code env.
 
+as this application code is fully integrated with API's. As data is called using API. for all the sections, check the code for your reference.
 
-    
+as in this both the branches application was created, with all the html boiler code with functionalities and api integration. 
 
+now lets create an application from scratch. close all the current existing tabs. 
 
-
-
-
-
-
+# Steps to create a new application.  
 # Getting Started with Create React App
 
 -open your visual code env.
 -in the tabs section , open the terminal , write this below command to create inital react application
 ## npx create-react-app projectname --template typescript
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 In the project directory, you can run:
 
@@ -84,30 +79,56 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+## create one components folder structre , inside the component make one sample folder with its css file.
+> src
+   > components
+      >sample
+         > sample.tsx
+         > sample.css
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+in sample.tsx create one function write some html elements inside of component.
 
-### `npm run build`
+### Eg:
+sample.tsx
+import React from 'react'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+function sample() {
+  return (
+    <div>
+        <h1 className="heading">Sample</h1>
+    </div>
+  )
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default sample
 
-### `npm run eject`
+sample.css  give some styling for that element 
+.heading{
+    text-align: center;
+    font-size: 30px;
+    color: blue;
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+now lets import that componenet file in app.tsx 
+import React from 'react';
+import './App.css';
+import Sample from './sample/sample';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+function App() {
+  return (
+    <div>
+      <Sample/>
+    </div>
+  );
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+export default App;
+
+
+run the application by using npm start command in your terminal.
+
 
 ## Learn More
 
